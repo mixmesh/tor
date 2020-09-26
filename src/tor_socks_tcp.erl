@@ -5,6 +5,7 @@
 
 -include_lib("apptools/include/log.hrl").
 -include_lib("apptools/include/serv.hrl").
+-include_lib("apptools/include/shorthand.hrl").
 
 -define(TOR_SOCKS_ADDRESS, {127, 0, 0, 1}).
 -define(TOR_SOCKS_PORT, 9050).
@@ -51,7 +52,7 @@ connect(DomainName, Port, Options, Timeout) ->
                         ok = client_greeting(Socket),
                         ok = client_authentication_request(Socket, Timeout),
                         ok = client_connection_request(Socket, Timeout,
-                                                       DomainName, Port),
+                                                       ?l2b(DomainName), Port),
                         socks_tunnel(Socket)
                     catch
                         throw:{?MODULE, Reason} ->
@@ -93,12 +94,13 @@ connect_recv(Socket, Length, Timeout) ->
 client_connection_request(Socket, Timeout, DomainName, Port) ->
     DomainNameSize = size(DomainName),
     ok = connect_send(Socket,
-                      <<?SOCKS5_VERSION,
-                        ?TCP_IP_STREAM_CONNECTION,
-                        ?RESERVED,
-                        ?DOMAIN_NAME,
-                        DomainNameSize, DomainName,
-                        Port:16>>),
+                      ?l2b([<<?SOCKS5_VERSION,
+                              ?TCP_IP_STREAM_CONNECTION,
+                              ?RESERVED,
+                              ?DOMAIN_NAME,
+                              DomainNameSize>>,
+                            DomainName,
+                            <<Port:16>>])),
     <<?SOCKS5_VERSION, Status, ?RESERVED, AddressType>> =
         connect_recv(Socket, 4, Timeout),
     case AddressType of

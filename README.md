@@ -4,7 +4,7 @@
 
 <dl>
   <dt>./src/tor_socks_tcp.erl</dt>
-  <dd>A simple plugin replacement for the gen_tcp module which communicates via a SOCKS5 proxy server</dd>
+  <dd>A simple plugin replacement for the gen_tcp module which communicates via a SOCKS5 proxy server. The pki server uses SOCKS5 as an option.</dd>
 </dl>
 
 ## Unit testing
