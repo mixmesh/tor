@@ -151,7 +151,7 @@ message_handler({Parent, Socket}) ->
             gen_tcp:close(Socket),
             exit(Reason);
         UnknownMessage ->
-            log:error({unknown_message, UnknownMessage}),
+            ?error_log({unknown_message, UnknownMessage}),
             noreply
     end.
 
