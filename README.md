@@ -10,5 +10,5 @@
 ## Unit testing
 
 ```
-$ ../obscrete/bin/unit_test --config ../obscrete/etc/obscrete-no-players.conf tor_socks_tcp
+$ ../obscrete/bin/unit_test --config ../obscrete/etc/obscrete-do-nothing.conf tor_socks_tcp
 ```
