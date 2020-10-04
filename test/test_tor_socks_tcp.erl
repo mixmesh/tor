@@ -1,4 +1,4 @@
--module(unit_test_tor_socks_tcp).
+-module(test_tor_socks_tcp).
 -export([start/0]).
 
 %% NOTE: Test uses a publically available echo server as described in
