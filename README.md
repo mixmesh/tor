@@ -13,13 +13,8 @@
 
 `make runtest` runs all tests, i.e.
 
-```
-$ ../obscrete/bin/run_test --config ../obscrete/etc/obscrete-do-nothing.conf test/
-```
+`$ ../obscrete/bin/run_test --config ../obscrete/etc/obscrete-do-nothing.conf test/`
 
 Tests can be run individually as well:
 
-```
-$ ../obscrete/bin/run_test --config ../obscrete/etc/obscrete-do-nothing.conf tor_socks_tcp
-
-```
+`$ ../obscrete/bin/run_test --config ../obscrete/etc/obscrete-do-nothing.conf tor_socks_tcp`
