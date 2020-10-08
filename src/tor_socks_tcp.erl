@@ -140,7 +140,7 @@ socks_tunnel(Socket) ->
 
 message_handler({Parent, Socket}) ->
     receive
-        close ->
+        {cast, close} ->
             gen_tcp:close(Socket),
             stop;
         {call, From, {send, Packet}} ->
@@ -158,8 +158,7 @@ message_handler({Parent, Socket}) ->
 %% Exported: close
 
 close(Pid)  ->
-    Pid ! close,
-    ok.
+    serv:cast(Pid, close).
 
 %% Exported: send
 
