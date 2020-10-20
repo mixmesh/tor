@@ -3,7 +3,7 @@
 -export([close/1]).
 -export([send/2, recv/2, recv/3]).
 
--include_lib("apptools/include/log.hrl").
+-include_lib("obscrete/include/log.hrl").
 -include_lib("apptools/include/serv.hrl").
 -include_lib("apptools/include/shorthand.hrl").
 
