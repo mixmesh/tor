@@ -125,11 +125,13 @@ client_connection_request(Socket, Timeout, DomainName, Port) ->
         ?HOST_UNREACHABLE ->
             throw({?MODULE, {connection, host_unreachable}});
         ?CONNECTION_REFUSED_BY_DESTINATION_HOST ->
-            throw({?MODULE, {connection, connection_refused_by_destination_host}});
+            throw({?MODULE,
+                   {connection, connection_refused_by_destination_host}});
         ?TTL_EXPIRED ->
             throw({?MODULE, {connection, ttl_expired}});
         ?COMMAND_NOT_SUPPORTED_OR_PROTOCOL_ERROR ->
-            throw({?MODULE, {connection, command_not_supported_or_protocol_error}});
+            throw({?MODULE,
+                   {connection, command_not_supported_or_protocol_error}});
         ?ADDRESS_TYPE_NOT_SUPPORTED ->
             throw({?MODULE, {connection, address_type_not_supported}})
     end.
