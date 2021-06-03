@@ -33,7 +33,9 @@
 -define(COMMAND_NOT_SUPPORTED_OR_PROTOCOL_ERROR, 16#07).
 -define(ADDRESS_TYPE_NOT_SUPPORTED, 16#08).
 
+%%
 %% Exported: connect
+%%
 
 connect(DomainName, Port, Options) ->
     connect(DomainName, Port, Options, infinity).
@@ -157,17 +159,23 @@ message_handler({Parent, Socket}) ->
             noreply
     end.
 
+%%
 %% Exported: close
+%%
 
 close(Pid)  ->
     serv:cast(Pid, close).
 
+%%
 %% Exported: send
+%%
 
 send(Pid, Packet) ->
     serv:call(Pid, {send, Packet}).
 
+%%
 %% Exported: recv
+%%
 
 recv(Pid, Length) ->
     serv:call(Pid, {recv, Length, infinity}).
